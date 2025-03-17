@@ -25,7 +25,7 @@ class ShadowComponent extends HTMLElement {
             if (event.data.type === "closeModal") {
                 if (event.data.value) {
                     const triggerButton = this.shadowRoot.querySelector(".ai-pd-container__trigger");
-                    const inffitsCblocKoverlay = this.shadowRoot.querySelector("#inffits_cblock--overlay");
+                    const inffitsCblocKoverlay = this.shadowRoot.querySelector("#inffits_cblock--pd--overlay");
                     if (triggerButton && inffitsCblocKoverlay) {
                         $(inffitsCblocKoverlay).fadeOut(); // 隱藏 overlay
                         triggerButton.classList.toggle("ai-pd-container__trigger--search");
@@ -1168,7 +1168,7 @@ a.update_delete .discount-content .item-price--original {
           height: 700px;
           width: 480px !important;
         }
-        #tryon {
+        #tryon--pd {
           margin: auto;
           height: 700px;
           width: 480px !important;
@@ -1181,29 +1181,10 @@ a.update_delete .discount-content .item-price--original {
           position: fixed;
           right: 0;
           bottom: 0;
-          height: 580px;
-          width: 355px !important;
         }
-        #tryon {
+        #tryon--pd {
           margin: auto;
-          height: 580px;
           width: 355px !important;
-        }
-      }
-
-      /* Mobile */
-      @media screen and (max-width: 354px) {
-        #inffits_cblock--pd {
-          position: fixed;
-          right: 0;
-          bottom: 0;
-          height: 480px;
-          width: 100% !important;
-        }
-        #tryon {
-          margin: auto;
-          height: 100%;
-          width: 100% !important;
         }
       }
     `;
@@ -1219,7 +1200,7 @@ a.update_delete .discount-content .item-price--original {
                 if (mutation.type === 'childList') {
                     // 確保按鈕元素已經渲染
                     const triggerButton = this.shadowRoot.querySelector(".ai-pd-container__trigger");
-                    const inffitsCblocKoverlay = this.shadowRoot.querySelector("#inffits_cblock--overlay");
+                    const inffitsCblocKoverlay = this.shadowRoot.querySelector("#inffits_cblock--pd--overlay");
                     if (triggerButton && inffitsCblocKoverlay) {
                         // 按鈕元素存在，執行事件綁定
                         triggerButton.addEventListener("pointerdown", (e) => {
@@ -1277,10 +1258,10 @@ a.update_delete .discount-content .item-price--original {
                                 <div class="ai-pd-container__icon"></div>
                                 <img class="ai-pd-container__icon--alert" src="https://raw.githubusercontent.com/infFITSDevelopment/pop-ad/refs/heads/main/icon-alert.svg"></img>
                             </button>
-                            <div id="inffits_cblock--overlay" style=" display: none;position: fixed;width: 100%;height: 100%;top: 0px;left: 0px; z-index: 999;background: rgba(0, 0, 0, 0.5);transform: none;">
+                            <div id="inffits_cblock--pd--overlay" style=" display: none;position: fixed;width: 100%;height: 100%;top: 0px;left: 0px; z-index: 999;background: rgba(0, 0, 0, 0.5);transform: none;">
                                 <div id="inffits_cblock--pd" style="z-index: 60;display: block;position: absolute; inset: 0;">
-                                    <div id="tryon" style="height: 100%;width:100%;display:flex;justify-content:center;align-items:center;">
-                                        <iframe id="inffits_tryon_window" style="height: 100%;width: 100%;visibility: visible;position: relative;border: none;outline: none;z-index: 14;max-width: 95vw;margin: 0 auto;" src="${window.location.port === "5500" ? "./iframe_container_module.html" : "https://ts-iframe-8ysy.vercel.app/iframe_container_module.html"}"></iframe>
+                                    <div id="tryon--pd" style="height: 100%;width:100%;display:flex;justify-content:center;align-items:center;">
+                                        <iframe id="inffits_tryon--pd_window" style="height: 100%;width: 100%;visibility: visible;position: relative;border: none;outline: none;z-index: 14;max-width: 95vw;margin: 0 auto;" src="${window.location.port === "5500" ? "./iframe_container_module.html" : "https://ts-iframe-8ysy.vercel.app/iframe_container_module.html"}"></iframe>
                                     </div>
                                 </div>
                             </div>
@@ -1291,7 +1272,7 @@ a.update_delete .discount-content .item-price--original {
 
 
                     // 獲取 iframe 的 contentWindow
-                    const iframeElement = this.shadowRoot.getElementById("inffits_tryon_window");
+                    const iframeElement = this.shadowRoot.getElementById("inffits_tryon--pd_window");
                     if (iframeElement) {
                         const iframe_container = iframeElement.contentWindow;
 
