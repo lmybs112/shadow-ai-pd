@@ -27,7 +27,7 @@ class ShadowComponent extends HTMLElement {
                     const triggerButton = this.shadowRoot.querySelector(".ai-pd-container__trigger");
                     const inffitsCblocKoverlay = this.shadowRoot.querySelector("#inffits_cblock--overlay");
                     if (triggerButton && inffitsCblocKoverlay) {
-                        inffitsCblocKoverlay.style.display = "none"; // 隱藏 overlay
+                        $(inffitsCblocKoverlay).fadeOut(); // 隱藏 overlay
                         triggerButton.classList.toggle("ai-pd-container__trigger--search");
                         triggerButton.classList.toggle("ai-pd-container__trigger--close");
                     }
@@ -1224,16 +1224,18 @@ a.update_delete .discount-content .item-price--original {
                         // 按鈕元素存在，執行事件綁定
                         triggerButton.addEventListener("pointerdown", (e) => {
                             if (triggerButton.classList.contains("ai-pd-container__trigger--search")) {
-                                inffitsCblocKoverlay.style.display = "block"; // 顯示 overlay
+                                $(inffitsCblocKoverlay).fadeIn(); // 顯示 overlay
                             } else {
-                                inffitsCblocKoverlay.style.display = "none"; // 隱藏 overlay
+                                $(inffitsCblocKoverlay).fadeOut(); // 隱藏 overlay
+
                             }
                             triggerButton.classList.toggle("ai-pd-container__trigger--search");
                             triggerButton.classList.toggle("ai-pd-container__trigger--close");
                         });
                         // 按鈕元素存在，執行事件綁定
                         inffitsCblocKoverlay.addEventListener("pointerdown", (e) => {
-                            inffitsCblocKoverlay.style.display = "none"; // 隱藏 overlay
+                            $(inffitsCblocKoverlay).fadeOut(); // 隱藏 overlay
+
                             triggerButton.classList.toggle("ai-pd-container__trigger--search");
                             triggerButton.classList.toggle("ai-pd-container__trigger--close");
                         });
